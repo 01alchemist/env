@@ -1,0 +1,51 @@
+{
+  "name": "@01/env",
+  "version": "1.0.0",
+  "description": "Nodejs env utils",
+  "main": "dist/index.js",
+  "typings": "src/index.ts",
+  "repository": "git@github.com:01alchemist/env.git",
+  "author": "Nidin Vinayakan <01@01alchemist.com>",
+  "keywords": [
+    "nodejs",
+    "env",
+    "utils"
+  ],
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "prettier": "prettier --write '**/*.{js,json,ts,gql,graphql}'",
+    "lint": "prettier --check '**/*.{js,json,ts,gql,graphql}'",
+    "start": "webpack --watch",
+    "build": "webpack",
+    "precommit": "lint-staged",
+    "test": "NODE_ENV=test jest --ci --config=./jest.json --coverage --reporters=default --reporters=jest-junit"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.12"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.13",
+    "@types/node": "12.6.8",
+    "clean-webpack-plugin": "3.0.0",
+    "fs-extra": "8.1.0",
+    "prettier": "1.17.1",
+    "prettier-webpack-plugin": "1.2.0",
+    "jest": "24.8.0",
+    "jest-cli": "24.8.0",
+    "jest-junit": "6.4.0",
+    "ts-jest": "24.0.2",
+    "ts-loader": "^6.0.4",
+    "tsd-webpack-plugin": "1.0.3",
+    "typescript": "3.5.1",
+    "webpack": "4.37.0",
+    "webpack-cli": "3.3.6",
+    "webpack-node-externals": "1.7.2"
+  }
+}

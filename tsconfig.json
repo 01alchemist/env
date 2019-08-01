@@ -7,7 +7,7 @@
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -21,10 +21,12 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "baseUrl": "./",
+    "outDir": "./dist",
     "paths": {
       "*": ["src/*", "node_modules/*"]
     },
     "jsx": "react",
     "esModuleInterop": true
-  }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

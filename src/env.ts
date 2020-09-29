@@ -15,19 +15,28 @@ export const isNode =
   typeof process !== "undefined" &&
   typeof process.stdout !== "undefined";
 
-export function env(name: string, defaultValue: string): string {
+export function env(name: string, defaultValue?: string): string | undefined {
   const envValue = process.env[name];
   return envValue || defaultValue;
 }
-export function envInt(name: string, defaultValue: number): number {
+export function envInt(
+  name: string,
+  defaultValue?: number
+): number | undefined {
   const envValue = process.env[name];
   return envValue ? parseInt(envValue) : defaultValue;
 }
-export function envFloat(name: string, defaultValue: number): number {
+export function envFloat(
+  name: string,
+  defaultValue?: number
+): number | undefined {
   const envValue = process.env[name];
   return envValue ? parseFloat(envValue) : defaultValue;
 }
-export function envBoolean(name: string, defaultValue: boolean): boolean {
+export function envBoolean(
+  name: string,
+  defaultValue?: boolean
+): boolean | undefined {
   const envValue = process.env[name];
   return envValue ? envValue === "true" : defaultValue;
 }

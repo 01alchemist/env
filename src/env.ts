@@ -40,3 +40,12 @@ export function envBoolean(
   const envValue = process.env[name];
   return envValue ? envValue === "true" : defaultValue;
 }
+export function envJson(name: string, defaultValue?: any): any {
+  const envValue = process.env[name];
+  if (envValue) {
+    try {
+      return JSON.parse(envValue);
+    } catch (e) {}
+  }
+  return defaultValue;
+}

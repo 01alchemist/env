@@ -1,4 +1,4 @@
-import { env, envInt, envFloat, envBoolean } from "env";
+import { env, envInt, envFloat, envBoolean, envJson } from "./env";
 
 describe("env test suite", () => {
   describe("When reading string env variable", () => {
@@ -61,6 +61,33 @@ describe("env test suite", () => {
     it("Should return default value", () => {
       delete process.env.BOOLEAN_VALUE;
       expect(envBoolean("BOOLEAN_VALUE", true)).toBe(true);
+    });
+  });
+
+  describe("envJson test suite", () => {
+    describe("When reading valid json env variable", () => {
+      it("Should return parsed json value", () => {
+        process.env.JSON_VALUE = `{ "value": "some-value" }`;
+        expect(envJson("JSON_VALUE")).toEqual({ value: "some-value" });
+      });
+    });
+    describe("When reading invalid json env variable", () => {
+      it("Should return parsed json value", () => {
+        process.env.JSON_VALUE = `{ value: "some-value" }`;
+        expect(envJson("JSON_VALUE")).toBeUndefined();
+      });
+    });
+    describe("When reading undefined json env variable", () => {
+      it("Should return default value", () => {
+        delete process.env.JSON_VALUE;
+        expect(envJson("JSON_VALUE", { value: true })).toEqual({
+          value: true,
+        });
+      });
+      it("Should return undefined if no default value", () => {
+        delete process.env.JSON_VALUE;
+        expect(envJson("JSON_VALUE")).toBeUndefined();
+      });
     });
   });
 });
